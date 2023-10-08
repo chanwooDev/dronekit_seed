@@ -1,7 +1,6 @@
 import RPi.GPIO as GPIO
-import time
 
-duty_cycle_by_angle = {
+DUTY_CYCLE_BY_ANGLE = {
     #듀티비는 서보모터에 따라 다를 수 있음
     0:3.0, 15:4, 30:5, 45:6, 60:7, 75:8, 90:9
 }
@@ -16,21 +15,12 @@ class Servomotor:
         self.change_angle(0)
         
     def change_angle(self, angle):
-        if duty_cycle_by_angle.get(angle) == None:
+        if DUTY_CYCLE_BY_ANGLE.get(angle) == None:
             raise Exception("없는 값을 입력했습니다. number: "+ angle)
         
-        self.pwm.ChangeDutyCycle(duty_cycle_by_angle[angle])
+        self.pwm.ChangeDutyCycle(DUTY_CYCLE_BY_ANGLE[angle])
     
     def __del__(self):
         self.pwm.stop()
         GPIO.cleanup()
         print("연결된 pwm이 clean 됩니다")
-
-
-servomoter = Servomotor()
-servomoter.change_angle(0)
-time.sleep(1)
-servomoter.change_angle(90)
-time.sleep(3)
-
-
