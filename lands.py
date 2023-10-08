@@ -46,7 +46,7 @@ lands = [Land(lu, ru, ld, rd, 50)]
 NOT_CONATAIN_ANGLE = 0
 
 #todo:고도에 따라 닫아줘야함
-def findSubMotorAngle(lat, lon):
+def find_subomotor_angle(lat, lon):
     coordinateSystem = CoordinateSystem(lat, lon)
 
     for land in lands:
@@ -55,10 +55,5 @@ def findSubMotorAngle(lat, lon):
 
     return NOT_CONATAIN_ANGLE
 
-print(findSubMotorAngle(1,1))
-    
-
-
-
-    
+print(find_subomotor_angle(1,1))
     
