@@ -35,25 +35,4 @@ class Land:
     def info(self):
         print("land: left up - {}, right up - {}, left down -  {}, right down - {}, sub_motor_angle = {}"
               .format(self.left_up, self.right_up, self.left_down, self.right_down, self.sub_motor_angle))
-
-lu = CoordinateSystem(0, 2)
-ru = CoordinateSystem(2, 2)
-ld = CoordinateSystem(0, 0)
-rd = CoordinateSystem(2, 0)
-
-lands = [Land(lu, ru, ld, rd, 50)]
-
-NOT_CONATAIN_ANGLE = 0
-
-#todo:고도에 따라 닫아줘야함
-def find_subomotor_angle(lat, lon):
-    coordinateSystem = CoordinateSystem(lat, lon)
-
-    for land in lands:
-        if (land.contain(coordinateSystem)):
-            return land.sub_motor_angle
-
-    return NOT_CONATAIN_ANGLE
-
-print(find_subomotor_angle(1,1))
     
