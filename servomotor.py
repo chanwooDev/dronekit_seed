@@ -16,7 +16,7 @@ class Servomotor:
         
     def change_angle(self, angle):
         if DUTY_CYCLE_BY_ANGLE.get(angle) == None:
-            raise Exception("없는 값을 입력했습니다. number: "+ angle)
+            raise RuntimeError("없는 값을 입력했습니다. number: "+ angle)
         
         self.pwm.ChangeDutyCycle(DUTY_CYCLE_BY_ANGLE[angle])
     
