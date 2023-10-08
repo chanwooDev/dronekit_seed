@@ -15,7 +15,7 @@ class Servomotor:
         self.pwm =  GPIO.PWM(servo_pin, 50)  # 50Hz (서보모터 PWM 동작을 위한 주파수) - 50hz은 공식적으로 약속된 값임
         self.pwm.start(3.0) #서보의 0도 위치(0.6ms)이동:값 3.0은 pwm주기인 20ms의 3%를 의미하므로,0.6ms됨.
 
-    def change_duty_cycle(number, self):
+    def change_duty_cycle(self, number):
         if angle_map.get(number) == None:
             print("없는 값을 입력했습니다. in  change_duty_cycle ")
             return
