@@ -3,9 +3,7 @@ from lands import Land, CoordinateSystem
 
 NOT_CONATAIN_ANGLE = 0
 
-def get_global_location():
-    # Import DroneKit-Python
-    connection_string = "tcp:127.0.0.1:5760"
+def get_global_location(connection_string): #"tcp:127.0.0.1:5760"
 
     # Connect to the Vehicle.
     print("Connecting to vehicle on: %s" % (connection_string,))
@@ -15,8 +13,6 @@ def get_global_location():
 
     # Close vehicle object before exiting script
     vehicle.close()
-    
-
     print("Completed")
 
     return global_frame
