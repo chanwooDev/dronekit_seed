@@ -1,10 +1,10 @@
 import RPi.GPIO as GPIO
 import time
-angle_map = {
-    #각도 10도 단위로 할 것 0~90도 0 10 20 30 40 50 60 70 80 90
-    0:3.0, 45:5.5, 90:7.5
-}
 
+duty_cycle_by_angle = {
+    #듀티비는 서보모터에 따라 다를 수 있음
+    0:3.0, 15:4, 30:5, 45:6, 60:7, 75:8, 90:9
+}
 
 class Servomotor:
 
@@ -16,11 +16,11 @@ class Servomotor:
         self.pwm.start(3.0) #서보의 0도 위치(0.6ms)이동:값 3.0은 pwm주기인 20ms의 3%를 의미하므로,0.6ms됨.
 
     def change_duty_cycle(self, number):
-        if angle_map.get(number) == None:
+        if duty_cycle_by_angle.get(number) == None:
             print("없는 값을 입력했습니다. in  change_duty_cycle ")
             return
         
-        self.pwm.ChangeDutyCycle(angle_map[number])
+        self.pwm.ChangeDutyCycle(duty_cycle_by_angle[number])
     
     def __del__(self):
         self.pwm.stop()
@@ -29,6 +29,8 @@ class Servomotor:
 
 
 servomoter = Servomotor()
+servomoter.change_duty_cycle(0)
+time.sleep(1)
 servomoter.change_duty_cycle(90)
 time.sleep(3)
 
