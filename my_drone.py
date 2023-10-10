@@ -1,7 +1,7 @@
 from dronekit import connect, VehicleMode, Vehicle
 from lands import Land, CoordinateSystem
 from servomotor import Servomotor
-import land_data_writer
+import land_dao
 
 NOT_CONATAIN_ANGLE = 0
 OUT_OF_LANDS = -1
@@ -9,7 +9,7 @@ OUT_OF_LANDS = -1
 class MyDrone:
 
     def __init__(self, connection_string):
-        self.lands = land_data_writer.load_lands()
+        self.lands = land_dao.load_lands()
         self.current_land_index = OUT_OF_LANDS
         self.connection_string = connection_string
         self.servomotor = Servomotor()  
