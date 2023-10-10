@@ -8,6 +8,8 @@ DUTY_CYCLE_BY_ANGLE = {
 class Servomotor:
 
     def __init__(self):
+        GPIO.cleanup()
+        
         servo_pin = 18
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(servo_pin, GPIO.OUT)

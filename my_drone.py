@@ -23,6 +23,17 @@ class MyDrone:
                 self.current_land_index = new_current_index
                 angle = self.lands[new_current_index].sub_motor_angle if new_current_index != OUT_OF_LANDS else 0
                 self.servomotor.change_angle(angle)
+    
+    def __find_current_land_index(self):
+        global_location = self.__get_global_location()
+        drone_coordinate_system = CoordinateSystem(global_location.lat, global_location.lon)
+        print(drone_coordinate_system)
+
+        for index, land in enumerate(self.lands):
+            if land.contain(drone_coordinate_system):
+                return index
+    
+        return OUT_OF_LANDS    
 
     def __get_global_location(self):
 
@@ -37,14 +48,4 @@ class MyDrone:
         print("location 가져오기 Completed")
 
         return global_frame
-    
-    def __find_current_land_index(self):
-        global_location = self.__get_global_location()
-        drone_coordinate_system = CoordinateSystem(global_location.lat, global_location.lon)
-
-        for index, land in enumerate(self.lands):
-            if land.contain(drone_coordinate_system):
-                return index
-    
-        return OUT_OF_LANDS    
         
