@@ -2,7 +2,7 @@
 import json
 from lands import Land, CoordinateSystem
 
-LANDS_FILE = "data/data.json"
+LANDS_FILE = "land_data/data.json"
 
 def load_lands():
     try:
