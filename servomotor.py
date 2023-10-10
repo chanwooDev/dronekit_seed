@@ -8,8 +8,6 @@ DUTY_CYCLE_BY_ANGLE = {
 class Servomotor:
 
     def __init__(self):
-        GPIO.cleanup()
-        
         servo_pin = 18
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(servo_pin, GPIO.OUT)
@@ -20,6 +18,7 @@ class Servomotor:
         if DUTY_CYCLE_BY_ANGLE.get(angle) == None:
             raise RuntimeError("없는 값을 입력했습니다. number: "+ angle)
         
+        print("각도를 변경합니다 new: {}".format(angle))
         self.pwm.ChangeDutyCycle(DUTY_CYCLE_BY_ANGLE[angle])
     
     def __del__(self):
