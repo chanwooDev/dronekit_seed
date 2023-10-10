@@ -14,8 +14,8 @@ def load_lands():
                 right_up = CoordinateSystem(land_data["right_up"]["lat"], land_data["right_up"]["lon"])
                 left_down = CoordinateSystem(land_data["left_down"]["lat"], land_data["left_down"]["lon"])
                 right_down = CoordinateSystem(land_data["right_down"]["lat"], land_data["right_down"]["lon"])
-                sub_motor_angle = land_data["sub_motor_angle"]
-                land = Land(left_up, right_up, left_down, right_down, sub_motor_angle)
+                servo_motor_angle = land_data["servo_motor_angle"]
+                land = Land(left_up, right_up, left_down, right_down, servo_motor_angle)
                 lands.append(land)
             return lands
     except FileNotFoundError:
@@ -38,7 +38,7 @@ def land_to_dict(land):
         "right_up": coordinate_system_to_dict(land.right_up),
         "left_down": coordinate_system_to_dict(land.left_down),
         "right_down": coordinate_system_to_dict(land.right_down),
-        "sub_motor_angle": land.sub_motor_angle
+        "servo_motor_angle": land.servo_motor_angle
     }
     
     return land_dict

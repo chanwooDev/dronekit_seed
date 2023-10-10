@@ -5,7 +5,7 @@ DUTY_CYCLE_BY_ANGLE = {
     0:3.0, 15:4, 30:5, 45:6, 60:7, 75:8, 90:9
 }
 
-class Servomotor:
+class ServoMotor:
 
     def __init__(self):
         servo_pin = 18

@@ -11,12 +11,12 @@ class CoordinateSystem:
         return "latitude: {}, longitude: {}".format(self.lat, self.lon)
               
 class Land:
-    def __init__(self, left_up, right_up, left_down, right_down, sub_motor_angle):
+    def __init__(self, left_up, right_up, left_down, right_down, servo_motor_angle):
         self.left_up = left_up
         self.right_up = right_up
         self.left_down = left_down
         self.right_down = right_down
-        self.sub_motor_angle = sub_motor_angle      
+        self.servo_motor_angle = servo_motor_angle      
 
         # todo: 어떤 좌표가 순서대로 들어올지 몰라서 sort 해야함 
         
@@ -33,7 +33,7 @@ class Land:
         return True
     
     def __str__(self):
-        return "land: left up - {},\n right up - {},\n left down -  {},\n right down - {},\n sub_motor_angle = {}\n".format(self.left_up, self.right_up, self.left_down, self.right_down, self.sub_motor_angle)
+        return "land: left up - {},\n right up - {},\n left down -  {},\n right down - {},\n servo_motor_angle = {}\n".format(self.left_up, self.right_up, self.left_down, self.right_down, self.servo_motor_angle)
 
 class Lands:
  

@@ -1,6 +1,6 @@
 from dronekit import connect, VehicleMode, Vehicle
 from lands import Land, CoordinateSystem
-from servomotor import Servomotor
+from servo_motor import ServoMotor
 import land_dao
 
 NOT_CONATAIN_ANGLE = 0
@@ -12,7 +12,7 @@ class MyDrone:
         self.lands = land_dao.load_lands()
         self.current_land_index = OUT_OF_LANDS
         self.connection_string = connection_string
-        self.servomotor = Servomotor()  
+        self.servo_motor = ServoMotor()  
 
     def seed_start(self):
         while True:
@@ -22,7 +22,7 @@ class MyDrone:
                 print("구역을 이동했으므로 서보모터 각도를 변경합니다")
                 self.current_land_index = new_current_index
                 angle = self.lands[new_current_index].sub_motor_angle if new_current_index != OUT_OF_LANDS else 0
-                self.servomotor.change_angle(angle)
+                self.servo_motor.change_angle(angle)
     
     def __find_current_land_index(self):
         global_location = self.__get_global_location()

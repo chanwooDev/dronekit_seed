@@ -1,1 +1,1 @@
-[{"left_up": {"lat": 0, "lon": 2}, "right_up": {"lat": 2, "lon": 2}, "left_down": {"lat": 0, "lon": 0}, "right_down": {"lat": 2, "lon": 0}, "sub_motor_angle": 45}]
+[{"left_up": {"lat": 0, "lon": 2}, "right_up": {"lat": 2, "lon": 2}, "left_down": {"lat": 0, "lon": 0}, "right_down": {"lat": 2, "lon": 0}, "servo_motor_angle": 45}]
