@@ -12,6 +12,7 @@ class Servomotor:
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(servo_pin, GPIO.OUT)
         self.pwm =  GPIO.PWM(servo_pin, 50)  # 50Hz (서보모터 PWM 동작을 위한 주파수) - 50hz은 공식적으로 약속된 값임
+        self.pwm.start(DUTY_CYCLE_BY_ANGLE[0])
         self.change_angle(0)
         
     def change_angle(self, angle):
@@ -25,3 +26,4 @@ class Servomotor:
         self.pwm.stop()
         GPIO.cleanup()
         print("연결된 pwm이 clean 됩니다")
+
