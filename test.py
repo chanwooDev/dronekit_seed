@@ -1,5 +1,4 @@
 from modules.lands import Land, CoordinateSystem
-
 def lands_sort_test():
 
     lu = CoordinateSystem(0, 2)
