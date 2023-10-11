@@ -1,7 +1,7 @@
 from dronekit import connect, VehicleMode, Vehicle
-from lands import Land, CoordinateSystem
-from servo_motor import ServoMotor
-import land_dao
+from modules.lands import Land, CoordinateSystem
+from modules.servo_motor import ServoMotor
+from modules import land_dao
 
 NOT_CONATAIN_ANGLE = 0
 OUT_OF_LANDS = -1
