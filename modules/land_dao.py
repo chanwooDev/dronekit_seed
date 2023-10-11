@@ -1,25 +1,37 @@
 
 import json
-from lands import Land, CoordinateSystem
+from modules.lands import Land, CoordinateSystem
 
 LANDS_FILE = "land_data/data.json"
 
 def load_lands():
     try:
         with open(LANDS_FILE, "r") as json_file:
+            if is_empty_file(json_file):
+                return []
+            
             data = json.load(json_file)
             lands = []
+            coordinate_systems = []
             for land_data in data:
-                left_up = CoordinateSystem(land_data["left_up"]["lat"], land_data["left_up"]["lon"])
-                right_up = CoordinateSystem(land_data["right_up"]["lat"], land_data["right_up"]["lon"])
-                left_down = CoordinateSystem(land_data["left_down"]["lat"], land_data["left_down"]["lon"])
-                right_down = CoordinateSystem(land_data["right_down"]["lat"], land_data["right_down"]["lon"])
+                coordinate_systems.append(CoordinateSystem(land_data["left_up"]["lat"], land_data["left_up"]["lon"]))
+                coordinate_systems.append(CoordinateSystem(land_data["left_down"]["lat"], land_data["left_down"]["lon"]))
+                coordinate_systems.append(CoordinateSystem(land_data["right_up"]["lat"], land_data["right_up"]["lon"]))
+                coordinate_systems.append(CoordinateSystem(land_data["right_down"]["lat"], land_data["right_down"]["lon"]))
                 servo_motor_angle = land_data["servo_motor_angle"]
-                land = Land(left_up, right_up, left_down, right_down, servo_motor_angle)
+                land = Land(coordinate_systems, servo_motor_angle)
                 lands.append(land)
             return lands
     except FileNotFoundError:
         return []
+
+def is_empty_file(json_file):
+    try:
+        data = json.load(json_file)
+        return False
+    
+    except json.decoder.JSONDecodeError as e:
+        return True
 
 def save_lands(lands):
     with open(LANDS_FILE, "w") as json_file:
