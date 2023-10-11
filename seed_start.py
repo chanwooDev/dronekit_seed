@@ -1,5 +1,5 @@
-from drone_sitl import DroneSitl 
-from my_drone import MyDrone
+from modules.drone_sitl import DroneSitl 
+from modules.my_drone import MyDrone
 
 
 
