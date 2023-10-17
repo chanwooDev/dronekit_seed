@@ -7,13 +7,11 @@ LANDS_FILE = "land_data/data.json"
 def load_lands():
     try:
         with open(LANDS_FILE, "r") as json_file:
-            if is_empty_file(json_file):
-                return []
-            
             data = json.load(json_file)
             lands = []
-            coordinate_systems = []
+            
             for land_data in data:
+                coordinate_systems = []
                 coordinate_systems.append(CoordinateSystem(land_data["left_up"]["lat"], land_data["left_up"]["lon"]))
                 coordinate_systems.append(CoordinateSystem(land_data["left_down"]["lat"], land_data["left_down"]["lon"]))
                 coordinate_systems.append(CoordinateSystem(land_data["right_up"]["lat"], land_data["right_up"]["lon"]))
@@ -24,14 +22,9 @@ def load_lands():
             return lands
     except FileNotFoundError:
         return []
-
-def is_empty_file(json_file):
-    try:
-        data = json.load(json_file)
-        return False
-    
     except json.decoder.JSONDecodeError as e:
-        return True
+        print("json decode 실패로 인한 빈 데이터 load")
+        return []
 
 def save_lands(lands):
     with open(LANDS_FILE, "w") as json_file:

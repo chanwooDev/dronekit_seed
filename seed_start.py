@@ -2,7 +2,6 @@ from modules.drone_sitl import DroneSitl
 from modules.my_drone import MyDrone
 
 
-
 def sitl_start():
     drone_sitl = DroneSitl()
     start(drone_sitl.sitl.connection_string())

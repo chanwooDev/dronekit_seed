@@ -9,6 +9,10 @@ def input_land():
     print("기존 데이터를 불러옵니다..")
     lands = land_dao.load_lands()
 
+    print("현재 땅 데이터:")
+    for land in lands:
+        print(land)
+
     print("땅의 꼭짓점 4개(lat, lon)를 입력해주십시오, 직사각형을 기반으로 합니다\n")
     print("자동으로 정렬되므로 아무 순서로 꼭짓점을 입력해주십시오")
     print("입력 예시: 112.3, 241.44 ")
@@ -43,6 +47,3 @@ def input_land():
 
 input_land()
     
-    
-    
-
